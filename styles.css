@@ -1,0 +1,365 @@
+/* ===== VARIÁVEIS DE CORES ===== */
+:root {
+    --primary: #4361ee;
+    --primary-dark: #3a56d4;
+    --sidebar-bg: #2b2d42;
+    --text-light: #edf2f4;
+    --text-dark: #2b2d42;
+    --success: #4cc9f0;
+    --danger: #f72585;
+    --card-bg: #ffffff;
+  }
+  
+  /* ===== RESET E ESTILOS GLOBAIS ===== */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: background-color 0.2s, transform 0.2s;
+  }
+  
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background-color: #f8f9fa;
+    color: var(--text-dark);
+    line-height: 1.6;
+  }
+  
+  /* ===== LAYOUT PRINCIPAL ===== */
+  .app-container {
+    display: flex;
+    min-height: 100vh;
+  }
+  
+  /* ===== MENU LATERAL ===== */
+  .sidebar {
+    width: 240px;
+    background: var(--sidebar-bg);
+    color: var(--text-light);
+    padding: 1.5rem 0;
+    height: 100vh;
+    position: fixed;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 1.5rem 1.5rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  
+  .icon-logo {
+    width: 28px;
+    height: 28px;
+    fill: currentColor;
+  }
+  
+  .menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .menu-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0.75rem 1.5rem;
+    color: var(--text-light);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  
+  .menu-link:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateX(5px);
+  }
+  
+  .menu-link.active {
+    background: var(--primary);
+    border-left: 3px solid var(--text-light);
+  }
+  
+  .icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    opacity: 0.9;
+  }
+  
+  .menu-text {
+    font-size: 0.95rem;
+  }
+  
+  /* ===== CONTEÚDO PRINCIPAL ===== */
+  .main-content {
+    margin-left: 240px;
+    padding: 2rem;
+    min-height: 100vh;
+    width: calc(100% - 240px);
+  }
+  
+  /* ===== COMPONENTES ===== */
+  .card {
+    background: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1.25rem;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+  }
+  
+  .form-control:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(67, 97, 238, 0.2);
+  }
+  
+  /* ===== BOTÕES ===== */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+  }
+  
+  .btn-primary {
+    background: var(--primary);
+    color: white;
+  }
+  
+  .btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+  }
+  
+  /* ===== FORM LAYOUT ===== */
+  .form-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .form-row .form-group {
+    flex: 1;
+  }
+  
+  /* ===== VALIDAÇÃO ===== */
+  input:required, select:required {
+    border-left: 3px solid var(--primary);
+  }
+  
+  input:invalid, select:invalid {
+    border-left: 3px solid var(--danger);
+  }
+  
+  /* ===== RESPONSIVIDADE ===== */
+  @media (max-width: 768px) {
+    .sidebar {
+      width: 72px;
+      padding: 1rem 0.5rem;
+    }
+    
+    .logo span, .menu-text {
+      display: none;
+    }
+    
+    .main-content {
+      margin-left: 72px;
+      width: calc(100% - 72px);
+    }
+    
+    .menu-link {
+      justify-content: center;
+    }
+  }
+  /* ===== FORMULÁRIOS OTIMIZADOS ===== */
+.form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+  
+  .form-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .form-header h1 {
+    font-size: 1.8rem;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .form-section {
+    margin-bottom: 2rem;
+  }
+  
+  .form-section-title {
+    font-size: 1.1rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px dashed #ddd;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  /* Campos agrupados visualmente */
+  .field-group {
+    background: #f9fafb;
+    padding: 1.25rem;
+    border-radius: 8px;
+    margin-bottom: 1.25rem;
+    border: 1px solid #eee;
+  }
+  
+  /* Melhoria para labels */
+  .form-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    color: #555;
+  }
+  
+  /* Ícones para campos importantes */
+  .required-field::after {
+    content: "*";
+    color: var(--danger);
+    margin-left: 4px;
+  }
+  
+  /* Ajuste para textarea */
+  textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+  }
+  
+  /* Grupo de botões otimizado */
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #eee;
+  }
+  /* Menu Dropdown */
+.menu-dropdown {
+    position: relative;
+    margin-bottom: 8px;
+}
+
+.dropdown-header {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    cursor: pointer;
+    color: var(--text-light);
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+.dropdown-header:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.dropdown-arrow {
+    width: 16px;
+    height: 16px;
+    margin-left: auto;
+    transition: transform 0.3s;
+}
+
+.dropdown-menu {
+    list-style: none;
+    padding-left: 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.menu-dropdown.active .dropdown-menu {
+    max-height: 500px; /* Ajuste conforme necessário */
+}
+
+.menu-dropdown.active .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+/* Ícones dos submenus */
+.dropdown-menu .icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+}
+/* Estilos para campos monetários e de tempo */
+.input-group {
+    display: flex;
+    align-items: center;
+}
+
+.input-group .form-control {
+    flex: 1;
+}
+
+.input-group .unit {
+    margin-left: 8px;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Ajuste para selects */
+select.form-control {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+}

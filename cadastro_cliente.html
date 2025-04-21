@@ -1,0 +1,191 @@
+{% extends "base.html" %}
+
+{% block title %}Cadastrar Cliente{% endblock %}
+
+{% block content %}
+<div class="form-container">
+  <div class="form-header">
+    <h1>
+      <svg class="icon" viewBox="0 0 24 24" width="28" height="28">
+        <use href="#icon-clients"/>
+      </svg>
+      Cadastro de Cliente
+    </h1>
+    <p>Preencha os dados básicos e complementares</p>
+  </div>
+
+  <form method="POST">
+    <div class="form-grid">
+      <!-- Coluna 1 - Dados Básicos -->
+      <div class="form-section">
+        <h3 class="form-section-title">
+          <svg class="icon" viewBox="0 0 24 24" width="20" height="20">
+            <use href="#icon-info"/>
+          </svg>
+          Dados Principais
+        </h3>
+
+        <div class="field-group">
+          <div class="form-group">
+            <label for="tipoCliente" class="required-field">Tipo de Cliente</label>
+            <select name="tipo" id="tipoCliente" class="form-control" required>
+              <option value="">Selecione...</option>
+              <option value="PF">Pessoa Física</option>
+              <option value="PJ">Pessoa Jurídica</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="razao_social" class="required-field">Razão Social/Nome Completo</label>
+            <input type="text" id="razao_social" name="razao_social" class="form-control" required>
+          </div>
+
+          <div class="form-group" id="nomeFantasiaGroup">
+            <label for="nome_fantasia">Nome Fantasia (se PJ)</label>
+            <input type="text" id="nome_fantasia" name="nome_fantasia" class="form-control">
+          </div>
+        </div>
+
+        <div class="field-group">
+          <div class="form-group">
+            <label for="cnpj_cpf" class="required-field">CNPJ/CPF</label>
+            <input type="text" id="cnpj_cpf" name="cnpj_cpf" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label for="data_registro" class="required-field">Data Abertura/Aniversário</label>
+            <input type="date" id="data_registro" name="data_registro" class="form-control" required>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coluna 2 - Contato -->
+      <div class="form-section">
+        <h3 class="form-section-title">
+          <svg class="icon" viewBox="0 0 24 24" width="20" height="20">
+            <use href="#icon-contact"/>
+          </svg>
+          Informações de Contato
+        </h3>
+
+        <div class="field-group">
+          <div class="form-group">
+            <label for="email" class="required-field">E-mail</label>
+            <input type="email" id="email" name="email" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label for="telefone" class="required-field">Telefone/Celular</label>
+            <input type="tel" id="telefone" name="telefone" class="form-control" required>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <div class="form-group">
+            <label for="atividade" class="required-field">Atividade Econômica/Profissão</label>
+            <input type="text" id="atividade" name="atividade" class="form-control" required>
+          </div>
+
+          <div class="form-group" id="funcionariosGroup" style="display:none;">
+            <label for="total_funcionarios">Total de Funcionários (se PJ)</label>
+            <input type="number" id="total_funcionarios" name="total_funcionarios" class="form-control" min="0">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Seção de Endereço -->
+    <div class="form-section">
+      <h3 class="form-section-title">
+        <svg class="icon" viewBox="0 0 24 24" width="20" height="20">
+          <use href="#icon-location"/>
+        </svg>
+        Endereço
+      </h3>
+      
+      <div class="field-group">
+        <div class="form-group">
+          <label for="cep">CEP</label>
+          <div class="form-row">
+            <input type="text" id="cep" name="cep" class="form-control" style="flex: 1;">
+            <button type="button" onclick="buscarCEP()" class="btn" style="width: auto;">
+              Buscar
+            </button>
+          </div>
+        </div>
+
+        <div class="form-grid" style="grid-template-columns: 2fr 1fr 1fr;">
+          <div class="form-group">
+            <label for="rua" class="required-field">Rua/Avenida</label>
+            <input type="text" id="rua" name="rua" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="quadra">Quadra</label>
+            <input type="text" id="quadra" name="quadra" class="form-control">
+          </div>
+          
+          <div class="form-group">
+            <label for="lote">Casa/Lote</label>
+            <input type="text" id="lote" name="lote" class="form-control">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group" style="flex: 1;">
+            <label for="bairro" class="required-field">Bairro</label>
+            <input type="text" id="bairro" name="bairro" class="form-control" required>
+          </div>
+          
+          <div class="form-group" style="flex: 1;">
+            <label for="cidade" class="required-field">Cidade</label>
+            <input type="text" id="cidade" name="cidade" class="form-control" required>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ações do Formulário -->
+    <div class="form-actions">
+      <a href="{{ url_for('dashboard') }}" class="btn">
+        Cancelar
+      </a>
+      <button type="submit" class="btn btn-primary">
+        <svg class="icon" viewBox="0 0 24 24" width="18" height="18">
+          <use href="#icon-save"/>
+        </svg>
+        Salvar Cliente
+      </button>
+    </div>
+  </form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<!-- Bibliotecas externas -->
+<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
+
+<!-- Script principal -->
+<script src="{{ url_for('static', filename='clientes.js') }}"></script>
+
+<script>
+// Controle dinâmico dos campos PJ/PF
+document.getElementById('tipoCliente').addEventListener('change', function() {
+    const isPJ = this.value === 'PJ';
+    document.getElementById('funcionariosGroup').style.display = isPJ ? 'block' : 'none';
+    document.getElementById('nomeFantasiaGroup').style.display = isPJ ? 'block' : 'none';
+    
+    // Atualiza máscara dinamicamente
+    $('#cnpj_cpf').inputmask(isPJ ? '99.999.999/9999-99' : '999.999.999-99');
+});
+
+// Inicialização
+document.addEventListener('DOMContentLoaded', function() {
+    // Aplica máscaras iniciais
+    $('#telefone').inputmask('(99) 99999-9999');
+    $('#cep').inputmask('99999-999');
+});
+</script>
+{% endblock %}

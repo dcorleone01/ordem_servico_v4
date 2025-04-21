@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h1>Ordens de Serviço</h1>
+    
+    <table style="width:100%; border-collapse: collapse;">
+        <thead>
+            <tr style="background-color: #f2f2f2;">
+                <th style="padding: 10px; border: 1px solid #ddd;">ID</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">Tipo</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">Prioridade</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for os in ordens %}
+            <tr>
+                <td style="padding: 10px; border: 1px solid #ddd;">{{ os.id }}</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">{{ os.tipo_servico }}</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">{{ os.prioridade }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
