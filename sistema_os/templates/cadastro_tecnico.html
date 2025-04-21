@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Cadastrar Técnico{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h1>Cadastrar Técnico</h1>
+    
+    <form method="POST">
+        <div class="form-group">
+            <label for="nome">Nome Completo:</label>
+            <input type="text" id="nome" name="nome" class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="especialidade">Especialidade:</label>
+            <select id="especialidade" name="especialidade" class="form-control" required>
+                <option value="">Selecione...</option>
+                <option value="Elétrica">Elétrica</option>
+                <option value="Hidráulica">Hidráulica</option>
+                <option value="TI">TI</option>
+                <option value="Mecânica">Mecânica</option>
+                <option value="Ar Condicionado">Ar Condicionado</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="telefone">Telefone:</label>
+            <input type="tel" id="telefone" name="telefone" class="form-control" placeholder="(00) 00000-0000">
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        <a href="{{ url_for('dashboard') }}" class="btn">Voltar</a>
+    </form>
+</div>
+{% endblock %}

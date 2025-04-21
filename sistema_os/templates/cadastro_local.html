@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Cadastrar Local{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h1>Cadastrar Local</h1>
+    
+    <form method="POST">
+        <div class="form-group">
+            <label for="nome">Nome do Local:</label>
+            <input type="text" id="nome" name="nome" class="form-control" placeholder="Ex: Sala de Reuniões 1" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="endereco">Endereço Completo:</label>
+            <textarea id="endereco" name="endereco" class="form-control" rows="3" required></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="responsavel">Responsável:</label>
+            <input type="text" id="responsavel" name="responsavel" class="form-control">
+        </div>
+        
+        <div class="form-group">
+            <label for="telefone_contato">Telefone para Contato:</label>
+            <input type="tel" id="telefone_contato" name="telefone_contato" class="form-control">
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Salvar Local</button>
+        <a href="{{ url_for('dashboard') }}" class="btn">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

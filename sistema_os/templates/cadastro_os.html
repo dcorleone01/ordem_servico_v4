@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Cadastrar OS{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h1>Nova Ordem de Serviço</h1>
+    
+    <form method="POST">
+        <div class="form-group">
+            <label for="solicitante">Solicitante:</label>
+            <input type="text" id="solicitante" name="solicitante" class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="tipo_servico">Tipo de Serviço:</label>
+            <select id="tipo_servico" name="tipo_servico" class="form-control" required>
+                <option value="">Selecione...</option>
+                <option value="Elétrica">Elétrica</option>
+                <option value="CFTV">CFTV</option>
+                <option value="Informática">Informática</option>
+                <option value="Alarmes">Alarmes</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="prioridade">Prioridade:</label>
+            <select id="prioridade" name="prioridade" class="form-control" required>
+                <option value="Alta">Alta</option>
+                <option value="Média" selected>Média</option>
+                <option value="Baixa">Baixa</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="localizacao">Localização:</label>
+            <input type="text" id="localizacao" name="localizacao" class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="descricao">Descrição:</label>
+            <textarea id="descricao" name="descricao" class="form-control" rows="4" required></textarea>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Salvar OS</button>
+        <a href="{{ url_for('dashboard') }}" class="btn">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

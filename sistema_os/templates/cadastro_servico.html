@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}Cadastrar Tipo de Serviço{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <div class="form-header">
+        <h1>
+            <svg class="icon" viewBox="0 0 24 24" width="28" height="28">
+                <use href="#icon-settings"/>
+            </svg>
+            Cadastro de Tipo de Serviço
+        </h1>
+        <p>Defina os serviços oferecidos pela sua empresa</p>
+    </div>
+
+    <form method="POST">
+        <div class="form-grid">
+            <!-- Coluna 1 -->
+            <div class="form-section">
+                <div class="field-group">
+                    <div class="form-group">
+                        <label for="nome" class="required-field">Nome do Serviço</label>
+                        <input type="text" id="nome" name="nome" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="categoria">Categoria</label>
+                        <select id="categoria" name="categoria" class="form-control">
+                            <option value="">Selecione...</option>
+                            <option value="Manutenção">Manutenção</option>
+                            <option value="Instalação">Instalação</option>
+                            <option value="Reparo">Reparo</option>
+                            <option value="Inspeção">Inspeção</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coluna 2 -->
+            <div class="form-section">
+                <div class="field-group">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="tempo_medio">Tempo Médio (minutos)</label>
+                            <input type="number" id="tempo_medio" name="tempo_medio" class="form-control" min="1">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="valor_base">Valor Base (R$)</label>
+                            <input type="number" id="valor_base" name="valor_base" class="form-control" min="0" step="0.01">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Descrição -->
+        <div class="form-section">
+            <div class="field-group">
+                <div class="form-group">
+                    <label for="descricao">Descrição Detalhada</label>
+                    <textarea id="descricao" name="descricao" class="form-control" rows="4"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ações -->
+        <div class="form-actions">
+            <a href="{{ url_for('dashboard') }}" class="btn">Cancelar</a>
+            <button type="submit" class="btn btn-primary">
+                <svg class="icon" viewBox="0 0 24 24" width="18" height="18">
+                    <use href="#icon-save"/>
+                </svg>
+                Salvar Serviço
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}
